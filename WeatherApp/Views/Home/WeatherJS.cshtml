@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewBag.Title = "Weather...";
+}
+
+<h2>The Weather Today</h2>
+<div class="col-md-12">
+    <h3>Current Conditions in  <span id="name"></span></h3>
+</div>
+<div class="col-md-12">
+    Temperature is <span id="temp"> </span> &deg; C
+</div>
+<div class="col-md-12">
+    Humidity <span id="weath"></span>%
+</div>
+
+ 
+<button> Get Weather </button>
+
+
+
+
+<script>
+    $(document).ready(function () {
+        $("button").click(function () {
+    $.get("@Url.Action("GetWeather", "Home")", function (response)
+    {
+        console.log(response);
+        $("#name").text(response.name);
+        $("#temp").text(response.main.temp);
+        $("#weath").text(response.main.humidity);
+
+            });
+        });
+
+    });
+
+</script>
